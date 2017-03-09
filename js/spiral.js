@@ -1,12 +1,13 @@
 var mySize= -1;
 var baseAngle= 0;
-var opacity = 0.3;
+var opacity = 0;
 
 var angleSlider;
 var colorFillSlider;
 var colorStrokeSlider;
 var speedSlider;
 var opacitySlider;
+var fadeOutSlider;
 var resetButton;
 var clearButton;
 var fillCheckbox;
@@ -22,8 +23,8 @@ var setup = function() {
     myCanvas.parent('container');
     background(0);
     createMenu();
-    fillCheckbox.changed(fillMode)
-    strokeCheckbox.changed(strokeMode)
+    fillCheckbox.changed(fillMode);
+    strokeCheckbox.changed(strokeMode);
 }
 
 var draw = function() {
@@ -31,7 +32,6 @@ var draw = function() {
     colorFill = colorFillSlider.value();
     colorStroke = colorStrokeSlider.value();
     speed = speedSlider.value();
-    opacity = opacitySlider.value();
     colorMode(HSB, 255, 255, 255, 1);
     noStroke();
     fillMode();
@@ -42,7 +42,7 @@ var draw = function() {
     ellipse(0, mySize, -mySize/2.5  );
     mySize = mySize - speed;
     baseAngle+= addedAngle;
-    //opacity -= 0.005;
+    opacity -= fadeOutSlider.value();
 }
 
 var newSpiral= function(){
@@ -52,6 +52,7 @@ var newSpiral= function(){
 var reset = function(){
     background(0);
     mySize= -1;
+    opacity = opacitySlider.value();
 }
 
 var fillMode = function() {
@@ -72,9 +73,11 @@ var strokeMode = function() {
 }
 
 var createMenu = function() {
-    resetButton = createButton('Reset');
-    resetButton.parent('menu')
+    resetButton = createButton('Start/Reset');
+    resetButton.parent('menu');
+    resetButton.id('start');
     resetButton.mousePressed(reset);
+
 
     clearButton = createButton('Add Spiral');
     clearButton.parent('menu');
@@ -94,6 +97,11 @@ var createMenu = function() {
     opacityLabel.parent('menu');
     opacitySlider = createSlider(0, 1, 0.3, 0.05);
     opacitySlider.parent('menu');
+
+    var fadeOutLabel = createSpan('Fade out');
+    fadeOutLabel.parent('menu');
+    fadeOutSlider = createSlider(0, 0.01, 0, 0.0002)
+    fadeOutSlider.parent('menu');
 
     fillCheckbox = createCheckbox('Fill', true);
     fillCheckbox.parent('checkbox-fill');
