@@ -3,6 +3,7 @@ var baseAngle= 0;
 var opacity = 0;
 var originX = 0.5;
 var originY = 0.5;
+var colorVariance= 30;
 
 var angleSlider;
 var colorFillSlider;
@@ -16,6 +17,7 @@ var fillCheckbox;
 var strokeCheckbox;
 var xSlider;
 var ySlider;
+var colorVarianceSlider;
 
 
 var addedAngle = 20;
@@ -24,7 +26,7 @@ var colorStroke = 0;
 var speed = 0.5;
 
 var setup = function() {
-    var myCanvas = createCanvas (window.innerWidth * 0.80, window.innerHeight * 0.80);
+    var myCanvas = createCanvas (window.innerWidth * 0.68, window.innerHeight * 0.81);
     myCanvas.parent('container');
     background(0);
     createMenu();
@@ -39,6 +41,7 @@ var draw = function() {
     speed = speedSlider.value();
     originX = xSlider.value();
     originY = ySlider.value();
+    colorVariance = colorVarianceSlider.value();
     colorMode(HSB, 255, 255, 255, 1);
     noStroke();
     fillMode();
@@ -53,7 +56,8 @@ var draw = function() {
 }
 
 var newSpiral= function(){
-    mySize= -1;
+    mySize = -1;
+    opacity = opacitySlider.value();
 }
 
 var reset = function(){
@@ -64,7 +68,7 @@ var reset = function(){
 
 var fillMode = function() {
   if (fillCheckbox.checked()) {
-    fill(random(colorFill, colorFill+30),255,150, opacity)
+    fill(random(colorFill, colorFill+colorVariance),255,150, opacity)
   } else {
     noFill();
   }
@@ -90,47 +94,52 @@ var createMenu = function() {
     clearButton.parent('menu');
     clearButton.mousePressed(newSpiral);
 
-    var angleLabel = createSpan('Angle')
+    var angleLabel = createDiv('Angle')
     angleLabel.parent('menu');
     angleSlider = createSlider(0, 360, 20, 1)
     angleSlider.parent('menu');
 
-    var speedLabel = createSpan('Speed');
+    var speedLabel = createDiv('Speed');
     speedLabel.parent('menu');
     speedSlider = createSlider(0.1, 3, 0.5, 0.1)
     speedSlider.parent('menu');
 
-    var opacityLabel = createSpan('Opacity');
+    var opacityLabel = createDiv('Opacity');
     opacityLabel.parent('menu');
     opacitySlider = createSlider(0, 1, 0.3, 0.05);
     opacitySlider.parent('menu');
 
-    var fadeOutLabel = createSpan('Fade out');
+    var fadeOutLabel = createDiv('Fade out');
     fadeOutLabel.parent('menu');
     fadeOutSlider = createSlider(0, 0.01, 0, 0.0002)
     fadeOutSlider.parent('menu');
 
-    var xSliderLabel = createSpan('X-Origin');
+    var xSliderLabel = createDiv('X-Origin');
     xSliderLabel.parent('menu');
     xSlider = createSlider(0,1,0.5,0.05);
     xSlider.parent('menu');
 
-    var ySliderLabel = createSpan('Y-Origin');
+    var ySliderLabel = createDiv('Y-Origin');
     ySliderLabel.parent('menu');
     ySlider = createSlider(0,1,0.5,0.05);
     ySlider.parent('menu');
 
+    colorVarianceLabel = createDiv('Color variance');
+    colorVarianceLabel.parent('menu');
+    colorVarianceSlider = createSlider('0,200,30,2');
+    colorVarianceSlider.parent('menu')
+
 
     fillCheckbox = createCheckbox('Fill', true);
     fillCheckbox.parent('checkbox-fill');
-    var fillColorLabel = createSpan('Fill hue');
+    var fillColorLabel = createDiv('Fill hue');
     fillColorLabel.parent('checkbox-fill');
     colorFillSlider = createSlider(0, 225, 0, 1)
     colorFillSlider.parent('checkbox-fill');
 
     strokeCheckbox = createCheckbox('Stroke', false);
     strokeCheckbox.parent('checkbox-stroke');
-    var strokeColorLabel = createSpan('Stroke hue');
+    var strokeColorLabel = createDiv('Stroke hue');
     strokeColorLabel.parent('checkbox-stroke');
     colorStrokeSlider = createSlider(0, 225, 0, 1)
     colorStrokeSlider.parent('checkbox-stroke');

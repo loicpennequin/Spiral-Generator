@@ -13,12 +13,15 @@ h1, h2, h3 {
   font-family: Arial; }
 
 .UI {
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  width: 30%;
+  display: inline-block; }
 
 .wrapper {
   margin-bottom: 50px; }
 
 .container {
+  width: 69%;
   display: inline-block;
   border: solid white 2px;
   position: relative; }
@@ -33,7 +36,8 @@ button {
     color: red; }
 
 span {
-  padding: 5px; }
+  padding: 5px;
+  margin-right: 50px; }
 
 input {
   margin-top: 10px; }
@@ -48,7 +52,7 @@ input {
 .checkboxes {
   width: 100%; }
   .checkboxes .menu-checkbox {
-    width: 30%;
+    width: 48%;
     display: inline-block;
     border: solid white 2px; }
 
