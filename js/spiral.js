@@ -21,11 +21,14 @@ var ySlider;
 var colorVarianceSlider;
 var blndModeRadio;
 
-
 var addedAngle = 20;
 var colorFill = 0;
 var colorStroke = 0;
 var speed = 0.5;
+
+
+
+
 
 var setup = function() {
     var myCanvas = createCanvas (window.innerWidth * 0.65, window.innerHeight * 0.81);
@@ -66,7 +69,10 @@ var newSpiral= function(){
 }
 
 var reset = function(){
-    background(0);
+    blendMode(BLEND)
+    fill(0);
+    rect(0,0,width, height);
+    background(0)
     mySize= -1;
     opacity = opacitySlider.value();
     document.getElementById('container').style.transform = 'none';

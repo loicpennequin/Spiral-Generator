@@ -13,7 +13,7 @@ var createMenu = function() {
 
     var angleLabel = createDiv('Angle')
     angleLabel.parent('menu');
-    angleSlider = createSlider(-360, 360, 30, 2)
+    angleSlider = createSlider(-360, 360, 30, 1)
     angleSlider.parent('menu');
     var angleDisplay = createSpan(angleSlider.value() + '°');
     angleDisplay.id('angle-display');
@@ -53,29 +53,29 @@ var createMenu = function() {
     yOriginDisplay.id('y-origin-display');
     yOriginDisplay.parent('menu')
 
-    colorVarianceLabel = createDiv('Color variance');
+    var colorVarianceLabel = createDiv('Color variance');
     colorVarianceLabel.parent('menu');
     colorVarianceSlider = createSlider('0,200,30,2');
     colorVarianceSlider.parent('menu')
-
 
     fillCheckbox = createCheckbox('Fill', true);
     fillCheckbox.parent('checkbox-fill');
     var fillColorLabel = createDiv('Fill hue');
     fillColorLabel.parent('checkbox-fill');
-    colorFillSlider = createSlider(0, 225, 0, 1)
+    colorFillSlider = createSlider(0, 255, 0, 1)
     colorFillSlider.parent('checkbox-fill');
 
     strokeCheckbox = createCheckbox('Stroke', false);
     strokeCheckbox.parent('checkbox-stroke');
     var strokeColorLabel = createDiv('Stroke hue');
     strokeColorLabel.parent('checkbox-stroke');
-    colorStrokeSlider = createSlider(0, 225, 0, 1)
+    colorStrokeSlider = createSlider(0, 255, 0, 1)
     colorStrokeSlider.parent('checkbox-stroke');
 
     blendModeSelect = createSelect();
     blendModeSelect.parent('menu');
-    blendModeSelect.option('Blend Mode(Default)', BLEND);
+    blendModeSelect.option('Blend Mode (CRASHES RESET BUTTON)', BLEND);
+    blendModeSelect.option('Blend', BLEND);
     blendModeSelect.option('Add', ADD);
     blendModeSelect.option('Darkest', DARKEST);
     blendModeSelect.option('Lightest', LIGHTEST);
