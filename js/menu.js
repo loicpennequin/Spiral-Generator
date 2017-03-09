@@ -1,3 +1,5 @@
+var angleDisplay;
+
 var createMenu = function() {
     resetButton = createButton('Start/Reset');
     resetButton.parent('menu');
@@ -11,8 +13,11 @@ var createMenu = function() {
 
     var angleLabel = createDiv('Angle')
     angleLabel.parent('menu');
-    angleSlider = createSlider(0, 360, 20, 1)
+    angleSlider = createSlider(-360, 360, 30, 2)
     angleSlider.parent('menu');
+    var angleDisplay = createSpan(angleSlider.value() + '°');
+    angleDisplay.id('angle-display');
+    angleDisplay.parent('menu');
 
     var speedLabel = createDiv('Speed');
     speedLabel.parent('menu');
@@ -23,6 +28,9 @@ var createMenu = function() {
     opacityLabel.parent('menu');
     opacitySlider = createSlider(0, 1, 0.3, 0.05);
     opacitySlider.parent('menu');
+    var opacityDisplay = createSpan(opacitySlider.value()*100 + '%')
+    opacityDisplay.id('opacity-display')
+    opacityDisplay.parent('menu')
 
     var fadeOutLabel = createDiv('Fade out');
     fadeOutLabel.parent('menu');
@@ -33,11 +41,17 @@ var createMenu = function() {
     xSliderLabel.parent('menu');
     xSlider = createSlider(0,1,0.5,0.05);
     xSlider.parent('menu');
+    var xOriginDisplay = createSpan(xSlider.value()*100 + '%');
+    xOriginDisplay.id('x-origin-display');
+    xOriginDisplay.parent('menu');
 
     var ySliderLabel = createDiv('Y-Origin');
     ySliderLabel.parent('menu');
     ySlider = createSlider(0,1,0.5,0.05);
     ySlider.parent('menu');
+    var yOriginDisplay = createSpan(ySlider.value()*100 + '%')
+    yOriginDisplay.id('y-origin-display');
+    yOriginDisplay.parent('menu')
 
     colorVarianceLabel = createDiv('Color variance');
     colorVarianceLabel.parent('menu');
@@ -75,4 +89,11 @@ var createMenu = function() {
     blendModeSelect.option('Soft Light', SOFT_LIGHT);
     blendModeSelect.option('Dodge', DODGE);
     blendModeSelect.option('Burn', BURN);
+}
+
+var displayUpdate = function() {
+    document.getElementById('angle-display').innerHTML = angleSlider.value() + '°';
+    document.getElementById('opacity-display').innerHTML = opacitySlider.value()*100 + '%';
+    document.getElementById('x-origin-display').innerHTML = xSlider.value()*100 + '%';
+    document.getElementById('y-origin-display').innerHTML = ySlider.value()*100 + '%';
 }
