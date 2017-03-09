@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  background-color: black; }
+
+h1 {
+  font-size: 3em;
+  text-shadow: 0 5px 5px #777777; }
+
+h1, h2, h3 {
+  color: white;
+  font-family: Arial; }
+
+.container {
+  display: inline-block;
+  border: solid white 1px;
+  position: relative; }
+
+@keyframes hue {
+  from {
+    filter: none; }
+  to {
+    filter: hue-rotate(360DEG); } }
+button {
+  margin-right: 15px; }
+
+span {
+  padding: 5px;
+  background-color: white;
+  border-radius: 5px; }
+
+input {
+  margin-top: 10px; }
+
+/*# sourceMappingURL=spiral.css.map */
