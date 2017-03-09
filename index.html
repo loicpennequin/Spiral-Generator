@@ -8,11 +8,16 @@
     <body>
             <h1>Spiral Generator</h1>
             <h2>using P5.js</h2>
-            <h3>upcoming features (by priority order) : opacity, optional fill/stroke, spiral origin, color variance, blend modes, size increase, etc..</h3> 
+            <h3>upcoming features (by priority order) : spiral origin, color variance, blend modes, size increase, etc..</h3>
 
-            <div class="wrapper">
-                <div class="container" id="container"></div>
+            <div class="wrapper" id="wrapper">
                 <div class="menu" id="menu"></div>
+                <div class="checkboxes" id="checkboxes">
+                    <div class="menu-checkbox" id="checkbox-fill"></div>
+                    <div class="menu-checkbox" id="checkbox-stroke"></div>
+                </div>
+                <div class="container" id="container"></div>
+
             </div>
         <script language="javascript" type="text/javascript" src="js/libraries/p5.min.js"></script>
         <script language="javascript" type="text/javascript" src="js/libraries/p5.dom.min.js"></script>
