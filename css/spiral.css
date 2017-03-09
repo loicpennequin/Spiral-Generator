@@ -15,6 +15,9 @@ h1, h2, h3 {
 .UI {
   margin-bottom: 20px; }
 
+.wrapper {
+  margin-bottom: 50px; }
+
 .container {
   display: inline-block;
   border: solid white 2px;
@@ -25,7 +28,7 @@ button {
 
 #start {
   font-weight: bold;
-  font-size: 1.4em; }
+  font-size: 1.3em; }
   #start:hover {
     color: red; }
 

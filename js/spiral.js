@@ -1,6 +1,8 @@
 var mySize= -1;
 var baseAngle= 0;
 var opacity = 0;
+var originX = 0.5;
+var originY = 0.5;
 
 var angleSlider;
 var colorFillSlider;
@@ -12,6 +14,9 @@ var resetButton;
 var clearButton;
 var fillCheckbox;
 var strokeCheckbox;
+var xSlider;
+var ySlider;
+
 
 var addedAngle = 20;
 var colorFill = 0;
@@ -32,12 +37,14 @@ var draw = function() {
     colorFill = colorFillSlider.value();
     colorStroke = colorStrokeSlider.value();
     speed = speedSlider.value();
+    originX = xSlider.value();
+    originY = ySlider.value();
     colorMode(HSB, 255, 255, 255, 1);
     noStroke();
     fillMode();
     strokeMode();
     angleMode(DEGREES);
-    translate(width/2, height/2);
+    translate(width*originX, height*originY);
     rotate(baseAngle);
     ellipse(0, mySize, -mySize/2.5  );
     mySize = mySize - speed;
@@ -103,6 +110,17 @@ var createMenu = function() {
     fadeOutSlider = createSlider(0, 0.01, 0, 0.0002)
     fadeOutSlider.parent('menu');
 
+    var xSliderLabel = createSpan('X-Origin');
+    xSliderLabel.parent('menu');
+    xSlider = createSlider(0,1,0.5,0.05);
+    xSlider.parent('menu');
+
+    var ySliderLabel = createSpan('Y-Origin');
+    ySliderLabel.parent('menu');
+    ySlider = createSlider(0,1,0.5,0.05);
+    ySlider.parent('menu');
+
+
     fillCheckbox = createCheckbox('Fill', true);
     fillCheckbox.parent('checkbox-fill');
     var fillColorLabel = createSpan('Fill hue');
@@ -116,6 +134,7 @@ var createMenu = function() {
     strokeColorLabel.parent('checkbox-stroke');
     colorStrokeSlider = createSlider(0, 225, 0, 1)
     colorStrokeSlider.parent('checkbox-stroke');
+
 
 
 }
